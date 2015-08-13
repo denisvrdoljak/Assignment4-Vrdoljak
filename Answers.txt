@@ -1,8 +1,10 @@
+https://s3.amazonaws.com/denisvrdoljak-w205-asn2/HW4/WC2015.csv
+
 Data Collection:
 My data collection script generates all relevant combinations of hashtags (37 total) and days (30 total), then generates a url based search for each, for a total of 1,110 search queries. Then, it proceeds to simulate scrolling to the bottom of the page, using the Selenium library’s Firefox webdriver, 2,500 times per search. This gives a potential total of 2,775,000 pages of tweets. (Pages, as displayed in a browser, not API “pages.”)
 
 Update: full dataset (well, only half the tags) has 507,030 tweets. WC2015-run1.csv is partial set, WC2015.csv is full set. Full set S3 address:
-https://s3.amazonaws.com/denisvrdoljak-w205-asn2/HW4/+WC2015.csv
+https://s3.amazonaws.com/denisvrdoljak-w205-asn2/HW4/WC2015.csv
 
 The actual number was lower due to web-based rate limits and several hashtags having next to no tweets except on select days (non-English speaking, or at least tweeting, countries whereas this search was limited to only English language tweets.) The final number (still going, as I write this) should be around 400k.
 
