@@ -3,9 +3,9 @@ HW4
 #s3 bucket: 
 #http://denisvrdoljak-w205-asn4.s3-us-west-1.amazonaws.com
 
-##Data Collection
+#Data Collection
 
-#design architecture:
+##design architecture:
 My data collection script generates all relevant combinations of hashtags (37 total) and days (30 total), then generates a url based search for each, for a total of 1,110 search queries. Then, it proceeds to simulate scrolling to the bottom of the page, using the Selenium library’s Firefox webdriver, 2,500 times per search. This gives a potential total of 2,775,000 pages of tweets. (Pages, as displayed in a browser, not API “pages.”)
 
 - Update:
@@ -20,27 +20,27 @@ To add another layer of resilience to the process, I prep the data to write to a
 
 My process (and design choice) stores the tweet text, the url referenced, the date created (in YYYY-MM-DD format), and the hour of the day created. This lets me dump most of the irrelevant data that isn’t necessary for this analysis, such as location, user, retweets, etc.
 
-#Note: 
+- Note: 
 for some of the analysis below, I’m using a subset of tweets (about 60k) from the WWC, FIFA, and WorldCup hashtags to get started sooner.
 
-#Chunking:
+##Chunking:
 The chunking takes place in that the data is collected for one day, and one hashtag at a time. The csv file is opened and closed between searches, and essentially appends the next chunk when it completes processing it.
 
-#Resiliency:
+##Resiliency:
 The process is chunked, and tracks its progress in a Done.txt file. It can be aborted and restarted without redoing any chunks. The current/incomplete chunk will be lost, and will be redone on a restart.
 
 Additionally, my functions take care to only open a file long enough to write to it, and then close it, making ample use of try/excepts to handle possible errors.
 
 
-##Analysis
+#Analysis
 
-#Design Architecture:
+##Design Architecture:
 
 All my mappers break down what they are mapping into single item instances, which are then aggregated by the reducer. There is also code in there to extract the data from a local csv file, with a single function generating line-by-line data to simulate an EMR locally, returning one line for each relevant result, which my reducers reduce and aggregate, regardless of order returned.
 
 The MPsimulator uses the functions the mappers are based on (in mappers.py), along with the generator (using a local csv). Or, the mappers/reducers (individual .py files) can be run locally or on EMR to the same effect. My reducers make ample use of Counter from the stock python Collections library, as this very efficiently handles a large part of the function of a reducer.
 
-#Analysis 1:
+##Analysis 1:
 On full set:
 - aus 10107
 - can 48923
@@ -65,7 +65,7 @@ On full set:
 
 next would have been the “word”/number “2” with a count of 9219 (less than 10k)
 
-#Analysis 2:
+##Analysis 2:
 
 The hourly breakdown of tweets for all 30 days, ordered, is in TweetsPerHour.txt, with a short sample here:
 - 2015-07-04@1100hours 95
@@ -90,7 +90,7 @@ sample from full set:
 - UPDATE: full set in TweetsPerHour-FULLdataSET.txt
 
 
-#Analysis 3:
+##Analysis 3:
 
 the top20 url’s (the ‘’ or blank being tweets with no url, followed by the next 20 highest counts, 21 results total) are, with frequency:
 - ('', 61879)
@@ -140,7 +140,7 @@ the top20 url’s (the ‘’ or blank being tweets with no url, followed by the
 - ('twitter.com/bbcsport/statu', 11)
 - ('fwd4.me/dwj', 10)
 
-#Analysis 4:
+##Analysis 4:
 
 top 20 pairs (including with self):
 - words the with the occur 46608 times.
@@ -168,7 +168,7 @@ top 20 pairs (including with self):
 
 Note, above, not filtering for stop words for simplicity, and it doesn’t specify to.
 
-#ANALYSIS 5 (optional):
+##ANALYSIS 5 (optional):
 
 PMI = log( wordpairs[x-with-y]*len(wordpairs)/wordpairs[x-with-x]/wordpairs[y-with-y])
 
@@ -177,9 +177,9 @@ PMI of #WWC and #WorldCup = 0.69314718056
 
 using “#WWC” and “WorldCup”
 
-##Questions
+#Questions
 
-#QUESTION 1
+##QUESTION 1
 The average length (using my partial run, while still waiting on the full run) is 106 characters. The most common length (mode) is 97 characters.
 
 Tweet Length Mode (mode,count):  (97, 2246)
@@ -193,43 +193,43 @@ Tweet Length Mean:  108
 
 As expected, the mean is very close to the sample from the partial set, though the mode changed a bit.
 
-#Question 2:
+##Question 2:
 Sample until full dataset available:
 
 Top 5 tweet tags (after only WWC and WorldCup):
-#WorldCup 37310 times
-#WWC 26130 times
+WorldCup 37310 times
+WWC 26130 times
 Hashtag-Searched 1 times ###CSV title/top row
 ***** END Top 5 tweet tags *****
 
 - UPDATE: from full set:
 
 Top 5 tweet tags:
--USA 95028 times
--FIFA 72655 times
--FIFAWWC 43668 times
--WorldCup 37310 times
--CAN 36601 times
--***** END Top 5 tweet tags *****
+- USA 95028 times
+- FIFA 72655 times
+- FIFAWWC 43668 times
+- WorldCup 37310 times
+- CAN 36601 times
+- ***** END Top 5 tweet tags *****
 
 - UPDATE: Full list available in TopTags.txt
 
 Can’t especially explain why Canada, a country with an entire population less than a single US state (ie California), is second…but the data says it is!
 
-#Question 3:
+##Question 3:
 USA and Japan occur in the same tweet 165 times.
 
-#Question 4:
+##Question 4:
 USA and Champion occur in the same tweet 0 times. (Guess that means we didn’t win.)
 
 
 
-##Twitter Archive Search
+#Twitter Archive Search
 
-#Design Architecture:
+##Design Architecture:
 This simple whoosh script sets up the wosh structure using the tweet text, the date, hour, tag with which’s search results it was found, and the tags in the tweet text.
 
-##Libraries used:
+#Libraries used:
 - os
 - selenium
 - whoosh
