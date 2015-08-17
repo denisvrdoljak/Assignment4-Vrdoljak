@@ -13,7 +13,6 @@ https://s3-us-west-1.amazonaws.com/denisvrdoljak-w205-asn4/WC2015-2testing.csv
 - Woosh
 https://s3-us-west-1.amazonaws.com/denisvrdoljak-w205-asn4/twitterwwc-index/_MAIN_0.toc
 
-%23NBAFinals2015.20150616-213612.json
 
 #Data Collection
 
