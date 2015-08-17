@@ -8,7 +8,7 @@ HW4
 #design architecture:
 My data collection script generates all relevant combinations of hashtags (37 total) and days (30 total), then generates a url based search for each, for a total of 1,110 search queries. Then, it proceeds to simulate scrolling to the bottom of the page, using the Selenium library’s Firefox webdriver, 2,500 times per search. This gives a potential total of 2,775,000 pages of tweets. (Pages, as displayed in a browser, not API “pages.”)
 
-#Update:
+-Update:
 full dataset (well, only half the tags) has 507,030 tweets. WC2015-run1.csv is partial set, WC2015.csv is full set. Full set S3 address:
 https://s3.amazonaws.com/denisvrdoljak-w205-asn2/HW4/WC2015.csv
 
@@ -77,7 +77,7 @@ The hourly breakdown of tweets for all 30 days, ordered, is in TweetsPerHour.txt
 -2015-07-05@1500hours 258
 -2015-07-05@1600hours 2482
 
-#UPDATE:
+-UPDATE:
 sample from full set:
 -2015-06-13@1000hours 456
 -2015-06-13@1100hours 1444
@@ -86,7 +86,7 @@ sample from full set:
 -2015-06-13@1400hours 3617
 -2015-06-13@1500hours 1925
 -2015-06-13@1600hours 1830
-#UPDATE: full set in TweetsPerHour-FULLdataSET.txt
+-UPDATE: full set in TweetsPerHour-FULLdataSET.txt
 
 
 #Analysis 3:
@@ -115,7 +115,7 @@ the top20 url’s (the ‘’ or blank being tweets with no url, followed by the
 -('theguardian.com/football/2015/', 3)
 
 
-#UPDATE: top 20 url’s (and counts) from full set (incl. no url/blanks):
+-UPDATE: top 20 url’s (and counts) from full set (incl. no url/blanks):
 -('', 500141)
 -('fifanews.ca', 105)
 -('ift.tt/1bogwgx', 104)
@@ -185,7 +185,7 @@ Tweet Length Mean:  106
 
 The Median is approximately 103, indicating a pretty normal distribution, with a slight skew/tail to the right. This means that my partial sample, follows the Central Limit Theorem, as it should with 60k sample points, and would also be representative of the population of the entire dataset.
 
-#UPDATE: full set:
+-UPDATE: full set:
 Tweet Length Mode (mode,count):  (138, 12973)
 Tweet Length Mean:  108
 
@@ -200,7 +200,7 @@ Top 5 tweet tags (after only WWC and WorldCup):
 Hashtag-Searched 1 times ###CSV title/top row
 ***** END Top 5 tweet tags *****
 
-#UPDATE: from full set:
+-UPDATE: from full set:
 
 Top 5 tweet tags:
 -#USA 95028 times
@@ -210,7 +210,7 @@ Top 5 tweet tags:
 -#CAN 36601 times
 -***** END Top 5 tweet tags *****
 
-#UPDATE: Full list available in TopTags.txt
+-UPDATE: Full list available in TopTags.txt
 
 Can’t especially explain why Canada, a country with an entire population less than a single US state (ie California), is second…but the data says it is!
 
