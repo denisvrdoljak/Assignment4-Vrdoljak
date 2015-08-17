@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup as soupy
 firefox= webdriver.Firefox()
 auth_MODE = "Twitter"
 UTILS_FOLDER = "DenisUtils"
-SEARCH_DEPTH = 2500
+SEARCH_DEPTH = 25
 TIME_STEP = 1
 #S3_Bucket = "DataDumpBucket"
 
@@ -43,7 +43,7 @@ os.chdir("/Users/denisvrdoljak/Berkeley/W205/Asn4_Work")
 
 def writecsv(tweet):
         try:
-            fp = open(" WC2015.csv", "a")
+            fp = open(" WC2015-2.csv", "a")
             fp.write(tweet)
             fp.write("\n")
             fp.close()
@@ -78,13 +78,12 @@ def gettweets(queryURL):
         firefox.execute_script("window.scrollTo(0, 1000000)")
     
     soup = soupy(firefox.page_source)
-    print len(soup.findAll('p',attrs={'class':'tweet-text'}))
     alltweets = soup.findAll('p',attrs={'class':'tweet-text'})
-    print len(soup.findAll('span',attrs={'class':'_timestamp'}))
+    print len(alltweets)
     allcreated = soup.findAll('span',attrs={'class':'_timestamp'})
-    print len(soup.findAll('span',attrs={'class':'js-display-url'}))
+    print len(allcreated)
     allurls = soup.findAll('span',attrs={'class':'js-display-url'})
-    
+    print len(allurls)
     j=0
     for i,tweet in enumerate(alltweets):
         if j < len(allurls) and allurls[j].text in tweet.text:
@@ -139,7 +138,6 @@ for hashtag,date in generatetags():
     #print hashtag
     #print date
     #print tweeturl
-    
 
     for tweet in gettweets(tweeturl):
             writecsv(tweet)
