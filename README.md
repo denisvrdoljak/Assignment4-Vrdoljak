@@ -21,7 +21,7 @@ My data collection script generates all relevant combinations of hashtags (37 to
 
 - Update:
 full dataset (well, only half the tags) has 507,030 tweets. WC2015-run1.csv is partial set, WC2015.csv is full set. Full set S3 address:
-https://s3.amazonaws.com/denisvrdoljak-w205-asn2/HW4/WC2015.csv
+https://s3-us-west-1.amazonaws.com/denisvrdoljak-w205-asn4/WC2015.csv
 
 The actual number was lower due to web-based rate limits and several hashtags having next to no tweets except on select days (non-English speaking, or at least tweeting, countries whereas this search was limited to only English language tweets.) The final number (still going, as I write this) should be around 400k.
 
