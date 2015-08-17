@@ -42,24 +42,24 @@ The MPsimulator uses the functions the mappers are based on (in mappers.py), alo
 
 #Analysis 1:
 On full set:
--#aus 10107
--#can 48923
--#canwnt 13551
--#chn 19484
--#eng 48513
--#fifa 75390
--#fifawwc 81833
--#football 11068
--#fra 27119
--#ger 47654
--#jpn 12375
--#ned 21985
--#nzl 10832
--#usa 127594
--#uswnt 43215
--#worldcup 43184
--#wwc 29742
--#wwc2015 45258
+- #aus 10107
+- #can 48923
+- #canwnt 13551
+- #chn 19484
+- #eng 48513
+- #fifa 75390
+- #fifawwc 81833
+- #football 11068
+- #fra 27119
+- #ger 47654
+- #jpn 12375
+- #ned 21985
+- #nzl 10832
+- #usa 127594
+- #uswnt 43215
+- #worldcup 43184
+- #wwc 29742
+- #wwc2015 45258
 -& 22463
 - 40006
 
@@ -203,11 +203,11 @@ Hashtag-Searched 1 times ###CSV title/top row
 -UPDATE: from full set:
 
 Top 5 tweet tags:
--#USA 95028 times
--#FIFA 72655 times
--#FIFAWWC 43668 times
--#WorldCup 37310 times
--#CAN 36601 times
+- #USA 95028 times
+- #FIFA 72655 times
+- #FIFAWWC 43668 times
+- #WorldCup 37310 times
+- #CAN 36601 times
 -***** END Top 5 tweet tags *****
 
 -UPDATE: Full list available in TopTags.txt
